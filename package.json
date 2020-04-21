@@ -1,0 +1,24 @@
+{
+  "name": "utspemrogweb",
+  "version": "1.0.0",
+  "description": "aplikasi uts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AxelHaryanto06/utspemrogweb.git"
+  },
+  "keywords": [
+    "rest",
+    "api",
+    "nodejs"
+  ],
+  "author": "Axel Haryanto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AxelHaryanto06/utspemrogweb/issues"
+  },
+  "homepage": "https://github.com/AxelHaryanto06/utspemrogweb#readme"
+}
