@@ -10,9 +10,10 @@ var ip = require('ip');
 exports.registrasi = function(req, res) {
     //array post
     var post = {        
+        nama_user: req.body.nama_user,
         email: req.body.email,
         password: md5(req.body.password),
-        role: req.body.role
+        level: req.body.level
     }
 
     var query = "SELECT email FROM ?? WHERE ??=?";
