@@ -93,6 +93,32 @@ exports.login = function(req,res){
     });
 }
 
+//menambahkan data servis
+exports.tambahdataservis = function (req, res) {
+    var post = {
+     tgl_servis: new Date(),
+     id_user: req.body.id_user,
+     id_montir: req.body.id_montir,
+     jumlah_sparepart: req.body.jumlah_sparepart,	
+     id_sparepart: req.body.id_sparepart
+     
+    }
+    var query = "INSERT INTO ?? SET ?";
+    var table = ["t_servis"];
+ 
+    query = mysql.format(query, table);
+     connection.query(query, post, function (error, rows) {
+             if (error) {
+                 console.log(error);
+             } else {
+                 response.ok("Input Data Servis Sukses", res)
+             }
+         });
+ };
+
 exports.halamanrahasia = function(req,res){
     response.ok("Halaman ini hanya untuk user dengan role = 2 !",res);
+}
+exports.halamanrahasia1 = function(req,res){
+    response.ok("Halaman ini hanya untuk user dengan role = 1 !",res);
 }
