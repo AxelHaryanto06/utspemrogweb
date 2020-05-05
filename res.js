@@ -17,16 +17,22 @@ exports.oknested = function(values, res){
         //tentukan key group
         if(akumulasikan[item.nama_user]){
             //buat variabel group nama user
-            const group = akumulasikan[item.nama_user];
+            const group = akumulasikan[item.nama_user];            
             //cek jika isi array adalah sparepart
-            if(Array.isArray(group.t_sparepart)){
+            if(Array.isArray(group.nama_sparepart, group.harga_sparepart, group.jumlah_sparepart, group.total)){
                 //tambahkan value ke dalam group sparepart
-                group.t_sparepart.push(item.t_sparepart);
+                group.nama_sparepart.push(item.nama_sparepart);
+                group.harga_sparepart.push(item.harga_sparepart);
+                group.jumlah_sparepart.push(item.jumlah_sparepart);
+                group.total.push(item.total);
             }else {
-                group.t_sparepart = [group.t_sparepart, item.t_sparepart];
+                group.nama_sparepart = [group.nama_sparepart, item.nama_sparepart];
+                group.harga_sparepart = [group.harga_sparepart, item.harga_sparepart];
+                group.jumlah_sparepart = [group.jumlah_sparepart, item.jumlah_sparepart];
+                group.total = [group.total, item.total];
             }
         }else {
-            akumulasikan[item.nama_user] = item;
+            akumulasikan[item.nama_user] = item;            
         }
         return akumulasikan;
     }, {});
