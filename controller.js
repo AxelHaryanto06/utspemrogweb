@@ -57,34 +57,32 @@ exports.tampilmontirid = function (req, res) {
 
 //menambahkan data servis
 exports.tambahdataservis = function (req, res) {
-    var post = {
-     tgl_servis: new Date(),
-     id_user: req.body.id_user,
-     id_montir: req.body.id_montir,
-     jumlah_sparepart: req.body.jumlah_sparepart,	
-     id_sparepart: req.body.id_sparepart
-     
-    }
-    var query = "INSERT INTO ?? SET ?";
-    var table = ["t_servis"];
- 
-    query = mysql.format(query, table);
-     connection.query(query, post, function (error, rows) {
-             if (error) {
-                 console.log(error);
-             } else {
-                 response.ok("Input Data Servis Sukses", res)
-             }
-         });
- };
+    var tgl_servis = req.body.tgl_servis;
+    var id_user = req.body.id_user;
+    var id_montir = req.body.id_montir;
+    var jumlah_sparepart = req.body.jumlah_sparepart;
+    var id_sparepart = req.body.id_sparepart;
 
- //menampilkan total biaya
-exports.tampilgroupsparepart = function(req, res){
-    connection.query('SELECT t_user.nama_user, t_servis.tgl_servis, t_montir.nama_montir, t_sparepart.nama_sparepart, t_sparepart.harga_sparepart, t_servis.jumlah_sparepart, (harga_perjam + jumlah_sparepart * harga_sparepart) AS total_harga FROM t_servis JOIN t_user JOIN t_montir JOIN t_sparepart WHERE t_servis.id_user = t_user.id_user AND t_servis.id_montir = t_montir.id_montir AND t_servis.id_sparepart = t_sparepart.id_sparepart ORDER BY t_user.id_user ',
-        function (error, rows, fields){
-            if(error){
+
+    connection.query('INSERT INTO t_servis (tgl_servis,id_user,id_montir,jumlah_sparepart,id_sparepart) VALUES (?,?,?,?,?)',
+        [tgl_servis, id_user, id_montir, jumlah_sparepart, id_sparepart],
+
+        function (error, rows, fields) {
+            if (error) {
                 console.log(error);
-            }else {
+            } else {
+                response.ok("Input Data Servis Sukses", res);
+            }
+        });
+};
+
+//menampilkan total biaya
+exports.tampilgroupsparepart = function (req, res) {
+    connection.query('SELECT t_user.nama_user, t_servis.tgl_servis, t_montir.nama_montir, t_sparepart.nama_sparepart, t_sparepart.harga_sparepart, t_servis.jumlah_sparepart, (harga_perjam + jumlah_sparepart * harga_sparepart) AS total_harga FROM t_servis JOIN t_user JOIN t_montir JOIN t_sparepart WHERE t_servis.id_user = t_user.id_user AND t_servis.id_montir = t_montir.id_montir AND t_servis.id_sparepart = t_sparepart.id_sparepart ORDER BY t_user.id_user ',
+        function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
                 response.oknested(rows, res);
             }
         }

@@ -23,13 +23,11 @@ exports.oknested = function(values, res){
                 //tambahkan value ke dalam group sparepart
                 group.nama_sparepart.push(item.nama_sparepart);
                 group.harga_sparepart.push(item.harga_sparepart);
-                group.jumlah_sparepart.push(item.jumlah_sparepart);
-                group.total.push(item.total);
+                group.jumlah_sparepart.push(item.jumlah_sparepart);                
             }else {
                 group.nama_sparepart = [group.nama_sparepart, item.nama_sparepart];
                 group.harga_sparepart = [group.harga_sparepart, item.harga_sparepart];
-                group.jumlah_sparepart = [group.jumlah_sparepart, item.jumlah_sparepart];
-                group.total = [group.total, item.total];
+                group.jumlah_sparepart = [group.jumlah_sparepart, item.jumlah_sparepart];                
             }
         }else {
             akumulasikan[item.nama_user] = item;            
