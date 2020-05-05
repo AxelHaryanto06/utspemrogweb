@@ -90,3 +90,94 @@ exports.tampilgroupsparepart = function (req, res) {
 
 }
 
+//input data montir
+exports.tambahmontir = function (req, res) {
+    var nama_montir = req.body.nama_montir;
+    var harga_perjam = req.body.harga_perjam;    
+
+
+    connection.query('INSERT INTO t_montir (nama_montir,harga_perjam) VALUES (?,?)',
+        [nama_montir, harga_perjam],
+
+        function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Input Data Montir Sukses", res);
+            }
+        });
+};
+
+//input data sparepart
+exports.tambahsparepart = function (req, res) {
+    var nama_sparepart = req.body.nama_sparepart;
+    var harga_sparepart = req.body.harga_sparepart;
+    var satuan = req.body.satuan;    
+
+
+    connection.query('INSERT INTO t_sparepart (nama_sparepart,harga_sparepart,satuan) VALUES (?,?,?)',
+        [nama_sparepart, harga_sparepart, satuan],
+
+        function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Input Sparepart Sukses", res);
+            }
+        });
+};
+
+//input data user
+exports.tambahuser = function (req, res) {
+    var nama_user = req.body.nama_user;
+    var email = req.body.email;
+    var password = req.body.password;
+    var level = req.body.level;
+
+    connection.query('INSERT INTO t_user (nama_user,email,password,level) VALUES (?,?,?,?)',
+    [nama_user,email,password,level],
+
+        function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Input User Sukses", res);
+            }
+        });
+};
+
+//input data level
+exports.tambahlevel = function (req, res) {
+    var nama_level = req.body.nama_level;    
+
+    connection.query('INSERT INTO t_level (nama_level) VALUES (?)',
+    [nama_level],
+
+        function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Level Berhasil Di tambahkan", res);
+            }
+        });
+};
+
+//input data service
+exports.tambahservis = function (req, res) {
+    var tgl_servis = req.body.tgl_servis;
+    var id_user = req.body.id_user;
+    var id_montir = req.body.id_montir;
+    var jumlah_sparepart = req.body.jumlah_sparepart;
+    var id_sparepart = req.body.id_sparepart;    
+
+    connection.query('INSERT INTO t_servis (tgl_servis,id_user,id_montir,jumlah_sparepart,id_sparepart) VALUES (?,?,?,?,?)',
+    [tgl_servis, id_user, id_montir, jumlah_sparepart, id_sparepart],
+
+        function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Data Servis Berhasil di Tambahkan", res);
+            }
+        });
+};
