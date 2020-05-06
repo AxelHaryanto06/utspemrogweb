@@ -7,16 +7,22 @@ var verifikasi = require('./verifikasi');
 //daftarkan menu registrasi
 router.post('/api/v1/register', auth.registrasi);
 router.post('/api/v1/login', auth.login);
-router.get('/user/pelanggan/tambahdataservis', verifikasi.verifikasi2(), control.tambahdataservis)
+router.post('/user/pelanggan/tambahdataservis', verifikasi.verifikasi2(), control.tambahdataservis)
 
 //alamat yang perlu otorisasi
 router.get('/user/pelanggan/tampil/biayaservis', verifikasi.verifikasi2(), control.tampilgroupsparepart);
 
 //admin
-router.get('/user/admin/input/montir', verifikasi.verifikasi1(), control.tambahmontir);
-router.get('/user/admin/input/sparepart', verifikasi.verifikasi1(), control.tambahsparepart);
-router.get('/user/admin/input/user', verifikasi.verifikasi1(), control.tambahuser);
-router.get('/user/admin/input/level', verifikasi.verifikasi1(), control.tambahlevel);
-router.get('/user/admin/input/servis', verifikasi.verifikasi1(), control.tambahservis);
+router.post('/user/admin/input/montir', verifikasi.verifikasi1(), control.tambahmontir);
+router.post('/user/admin/input/sparepart', verifikasi.verifikasi1(), control.tambahsparepart);
+router.post('/user/admin/input/user', verifikasi.verifikasi1(), control.tambahuser);
+router.post('/user/admin/input/level', verifikasi.verifikasi1(), control.tambahlevel);
+router.post('/user/admin/input/servis', verifikasi.verifikasi1(), control.tambahservis);
+
+router.put('/user/admin/ubah/montir', verifikasi.verifikasi1(), control.ubahmontir);
+router.put('/user/admin/ubah/sparepart', verifikasi.verifikasi1(), control.ubahsparepart);
+router.put('/user/admin/ubah/user', verifikasi.verifikasi1(), control.ubahuser);
+router.put('/user/admin/ubah/level', verifikasi.verifikasi1(), control.ubahlevel);
+router.put('/user/admin/ubah/servis', verifikasi.verifikasi1(), control.ubahservis);
 
 module.exports = router;
